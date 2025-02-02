@@ -1,18 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 @import "tailwindcss";
 
+@font-face{
+    font-family: PicNic;
+    src: url(./fonts/PicNic.woff);
+}
+
+@font-face{
+    font-family: TerminalGrotesque;
+    src: url(./fonts/terminal-grotesque.ttf);
+}
+
+@font-face{
+    font-family: MOneRegular;
+    src: url(./fonts/mplus-1m-regular.ttf);
+}
+
 @theme {
-    --font-eyebrow: "IBM Plex Mono", "mono"; 
-    --font-heading: "IBM Plex Mono", "mono"; 
-    --font-body: "IBM Plex Mono", "mono"; 
+    --font-heading: "PicNic", "mono"; 
+    --font-body: "MOneRegular", "mono"; 
     --color-primary: #00000;
     --color-secondary: #00000;
     --color-accent: #00000;
+    --drop-shadow-hard: 8px 8px rgba(0, 0, 0, 0.25); 
   }
 
 @layer base {
+    h1, h2, h3{
+        @apply font-heading select-none;
+    }
     h1{
-        @apply text-9xl font-light font-heading;
+        @apply text-9xl font-light leading-24 transition-all;
+    }
+
+    h2{
+        @apply text-7xl;
+    }
+
+    h3{
+        @apply text-2xl;
+    }
+
+    p{
+        @apply text-2xl font-body;
     }
 }

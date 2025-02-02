@@ -1,9 +1,10 @@
 {
-  "scripts":{
-    "tailwind" : "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
+  "scripts": {
+    "tailwind": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.1",
+    "lorem-ipsum": "^2.0.8",
     "p5": "^1.11.3",
     "tailwindcss": "^4.0.1"
   }
