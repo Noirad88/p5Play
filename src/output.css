@@ -379,6 +379,7 @@
     );
     --font-heading: "PicNic", "mono";
     --font-body: "MOneRegular", "mono";
+    --font-terminal: "TerminalGrotesque", "mono";
     --color-primary: #00000;
     --color-secondary: #00000;
     --color-accent: #00000;
@@ -536,20 +537,26 @@
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
+  .-z-10 {
+    z-index: calc(10 * -1);
+  }
+  .col-span-1 {
+    grid-column: span 1 / span 1;
+  }
+  .col-span-2 {
+    grid-column: span 2 / span 2;
+  }
   .flex {
     display: flex;
   }
-  .w-1\/2 {
-    width: calc(1/2 * 100%);
+  .h-full {
+    height: 100%;
   }
   .w-full {
     width: 100%;
   }
   .flex-col {
     flex-direction: column;
-  }
-  .flex-row {
-    flex-direction: row;
   }
   .items-start {
     align-items: flex-start;
@@ -562,17 +569,6 @@
   }
   .p-8 {
     padding: calc(var(--spacing) * 8);
-  }
-  .drop-shadow-hard {
-    --tw-drop-shadow: drop-shadow(var(--drop-shadow-hard));
-    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
-  }
-  .hover\:underline {
-    &:hover {
-      @media (hover: hover) {
-        text-decoration-line: underline;
-      }
-    }
   }
 }
 @font-face {
@@ -618,6 +614,29 @@
     line-height: var(--tw-leading, var(--text-2xl--line-height));
   }
 }
+@layer components {
+  .page-body {
+    background-image: url('./assets/bg.jpg');
+    background-size: cover;
+  }
+  .grid-parent {
+    display: grid;
+    width: 200px;
+    grid-auto-columns: 290px;
+    grid-auto-rows: 68px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: center;
+  }
+  .grid-child {
+    border-style: var(--tw-border-style);
+    border-width: 6px;
+    border-color: var(--color-black);
+    background-color: var(--color-black);
+    text-align: center;
+    font-family: var(--font-terminal);
+    color: var(--color-white);
+  }
+}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -644,42 +663,6 @@
     animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
-@property --tw-blur {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-brightness {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-contrast {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-grayscale {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-hue-rotate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-invert {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-opacity {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-saturate {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-sepia {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-leading {
   syntax: "*";
   inherits: false;
@@ -687,4 +670,9 @@
 @property --tw-font-weight {
   syntax: "*";
   inherits: false;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }

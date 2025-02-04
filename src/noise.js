@@ -11,6 +11,8 @@ function setup() {
 function draw(){
   clear()
   stroke(0,0,0)
+  strokeWeight(4)
+  fill(0,0,0,0)
 
   for (let noiseBlip of blipContainer){
     noiseBlip.draw()

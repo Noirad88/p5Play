@@ -18,6 +18,7 @@
 @theme {
     --font-heading: "PicNic", "mono"; 
     --font-body: "MOneRegular", "mono"; 
+    --font-terminal: "TerminalGrotesque", "mono";
     --color-primary: #00000;
     --color-secondary: #00000;
     --color-accent: #00000;
@@ -42,5 +43,18 @@
 
     p{
         @apply text-2xl font-body;
+    }
+
+}
+
+@layer components{
+    .page-body{
+        @apply bg-[url('./assets/bg.jpg')] bg-cover;
+    }
+    .grid-parent{
+        @apply grid grid-cols-3 items-center auto-cols-[290px] auto-rows-[68px] w-[200px];
+    }
+    .grid-child{
+        @apply bg-black text-white text-center font-terminal border-black border-6;
     }
 }
