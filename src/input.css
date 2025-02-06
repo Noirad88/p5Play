@@ -15,22 +15,40 @@
     src: url(./fonts/mplus-1m-regular.ttf);
 }
 
+@font-face{
+    font-family: DMSans;
+    src: url(./fonts/DMSans-Regular.ttf);
+}
+
+@font-face{
+    font-family: CirrusCumulus;
+    src: url(./fonts/CirrusCumulus.woff);
+}
+
+
 @theme {
     --font-heading: "PicNic", "mono"; 
     --font-body: "MOneRegular", "mono"; 
     --font-terminal: "TerminalGrotesque", "mono";
+    --font-dmsans: "DMSans", "sans-serif";
+    --font-cirruscumulus: "CirrusCumulus", "sans-serif";
     --color-primary: #00000;
     --color-secondary: #00000;
     --color-accent: #00000;
     --drop-shadow-hard: 8px 8px rgba(0, 0, 0, 0.25); 
   }
 
+
 @layer base {
     h1, h2, h3{
-        @apply font-heading select-none;
+        @apply font-cirruscumulus;
     }
     h1{
-        @apply text-9xl font-light leading-24 transition-all;
+        @apply text-9xl font-light leading-24 transition-all tracking-[-0.09em];
+    }
+
+    h2 .eyebrow{
+        @apply font-dmsans;
     }
 
     h2{
@@ -42,19 +60,32 @@
     }
 
     p{
-        @apply text-2xl font-body;
+        @apply text-lg font-dmsans;
     }
 
 }
 
 @layer components{
     .page-body{
-        @apply bg-[url('./assets/bg.jpg')] bg-cover;
+        @apply bg-cover;
     }
     .grid-parent{
         @apply grid grid-cols-3 items-center auto-cols-[290px] auto-rows-[68px] w-[200px];
     }
     .grid-child{
         @apply bg-black text-white text-center font-terminal border-black border-6;
+    }
+
+    button{
+        @apply p-4 font-terminal text-black bg-black;
+    }
+
+    .container-layout{
+        @apply w-full p-8 grid grid-cols-2 auto-rows-[min(400px,auto)] gap-10;
+
+    }
+
+    .container-layout > *{
+         @apply col-span-2;
     }
 }
