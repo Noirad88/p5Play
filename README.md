@@ -1,5 +1,5 @@
 # p5Play
-A collection of creative coding activities
+A collection of creative coding and activities.
 
 ## Local setup
 
