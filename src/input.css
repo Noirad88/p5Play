@@ -76,6 +76,10 @@
         @apply bg-black text-white text-center font-terminal border-black border-6;
     }
 
+    .big-link{
+        @apply font-terminal text-8xl bg-black p-4 text-white;
+    }
+
     button{
         @apply p-4 font-terminal text-black bg-black;
     }

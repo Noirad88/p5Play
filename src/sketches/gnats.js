@@ -40,7 +40,6 @@ function draw(){
   mouseInside = false
   
   if (mouseX > 0 && mouseX < width && mouseY > 0 && mouseY < height){
-    console.log("inside")
     mouseInside = true
   }
 
@@ -69,7 +68,6 @@ class Bug{
     let newY = wrap(this.pos.y,0,height)
     let frame = frameCount*.5 % 2
 
-    console.log(frame)
     vertex(newX - 2,newY - 2 + (4*frame))
     vertex(newX,newY)
     vertex(newX + 2,newY - 2 + (4*frame))

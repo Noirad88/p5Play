@@ -2,10 +2,14 @@ let totalExpanders = 16
 let occupiedSpaces = []
 let expanderContainer = []
 let expanderQueue = []
-const gridSize = 1
+const gridSize = 8
+
+function roundToMultiple(number, multiple) {
+  return Math.round(number / multiple) * multiple;
+}
 
 function setup() {
-  createCanvas(100,100)
+  createCanvas(500,500)
   pixelDensity(1)
   background(0)
   stroke(255)
@@ -20,8 +24,13 @@ function setup() {
   ]
 
   for (let i = 0; i < totalExpanders; i++){
-  expanderContainer.push(new Expander(round(random(0,width - gridSize)),round(random(0,height - gridSize)),expanderColors[i % expanderColors.length]))
-  }
+    let eX = gridSize * round(random(0,width/gridSize))
+    let eY = gridSize * round(random(0,width/gridSize))
+    let eColor = expanderColors[i % expanderColors.length]
+
+    expanderContainer.push(new Expander(eX,eY,eColor))
+   }
+
 }
 
 function draw(){
@@ -56,10 +65,12 @@ class Expander {
     this.isAlive = true
     this.neighborStates = [0,1,2,3]
     this.myColor = newColor
+    this.xOff = millis()
   }
 
   update(){
-    let randMove = floor(random(0,4))
+    let randMove = floor(random(0,this.neighborStates.length + 1))
+    console.log(randMove)
     let lmovepos = createVector(this.pos.x - gridSize,this.pos.y )
     let tmovepos = createVector(this.pos.x,this.pos.y - gridSize)
     let rmovepos = createVector(this.pos.x + gridSize,this.pos.y)
@@ -70,53 +81,75 @@ class Expander {
     let rmove = occupiedSpaces.find((pos) => pos[0] == rmovepos.x && pos[1] == rmovepos.y)
     let bmove = occupiedSpaces.find((pos) => pos[0] == bmovepos.x && pos[1] == bmovepos.y)
 
-    if (randMove == 0 && isSpaceFree(lmove,lmovepos)){
+    if (randMove == 0){
+      this.neighborStates.pop()
+
+      if (isSpaceFree(lmove,lmovepos)){
       console.log('left free!')
+      this.xOff+=0.01
       expanderQueue.push(new Expander(lmovepos.x,lmovepos.y,this.myColor))
+      }
+      else{
+        stroke(255,0,255)
+      }
+    }
+
+
+    else if (randMove == 1){
       this.neighborStates.pop()
-    }
-    else{
-      stroke(255,0,255)
-    }
 
-
-    if (randMove == 1 && isSpaceFree(tmove,tmovepos)){
+      if (isSpaceFree(tmove,tmovepos)){
       console.log('top free!')
+      this.xOff+=0.01
       expanderQueue.push(new Expander(tmovepos.x,tmovepos.y,this.myColor))
-      this.neighborStates.pop()
-    }
-    else{
-      stroke(0,0,255)
-    }
+      }
+      else{
+        stroke(0,0,255)
+      }
 
-    if (randMove == 2 && isSpaceFree(rmove,rmovepos)){
+    }
+   
+
+    else if (randMove == 2){
+      this.neighborStates.pop()
+
+      if (isSpaceFree(rmove,rmovepos)){
       console.log('right free!')
+      this.xOff+=0.01
       expanderQueue.push(new Expander(rmovepos.x,rmovepos.y,this.myColor))
+      }
+      else{
+        stroke(0,0,255)
+      }
+    }
+
+
+    else if (randMove == 3){
       this.neighborStates.pop()
-    }
-    else{
-      stroke(0,0,255)
-    }
 
-
-    if (randMove == 3 && isSpaceFree(bmove,bmovepos)){
+      if (isSpaceFree(bmove,bmovepos)){
       console.log('bottom free!')
       expanderQueue.push(new Expander(bmovepos.x,bmovepos.y,this.myColor))
-      this.neighborStates.pop()
-    }
-    else{
-      stroke(0,0,255)
-    }
+      this.xOff+=0.01
+      
+      }
+      else{
+        stroke(0,0,255)
+      }
+   }
 
     if (this.neighborStates.length == 0){
       this.isAlive = false
     }
+
   }
 
   draw(){
     console.log('draw')
+    fill(this.myColor)
     stroke(this.myColor)
-    point(this.pos.x,this.pos.y) 
+    square(this.pos.x,this.pos.y,gridSize) 
+
   }
 
 }

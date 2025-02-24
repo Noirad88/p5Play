@@ -536,6 +536,9 @@
   .relative {
     position: relative;
   }
+  .static {
+    position: static;
+  }
   .top-0 {
     top: calc(var(--spacing) * 0);
   }
@@ -612,9 +615,6 @@
   .border-black {
     border-color: var(--color-black);
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .bg-green-50 {
     background-color: var(--color-green-50);
   }
@@ -633,21 +633,14 @@
   .text-left {
     text-align: left;
   }
-  .font-terminal {
-    font-family: var(--font-terminal);
-  }
-  .text-8xl {
-    font-size: var(--text-8xl);
-    line-height: var(--tw-leading, var(--text-8xl--line-height));
-  }
   .text-black {
     color: var(--color-black);
   }
-  .text-white {
-    color: var(--color-white);
-  }
   .opacity-25 {
     opacity: 25%;
+  }
+  .filter {
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .md\:col-span-1 {
     @media (width >= 48rem) {
@@ -730,6 +723,14 @@
     font-family: var(--font-terminal);
     color: var(--color-white);
   }
+  .big-link {
+    background-color: var(--color-black);
+    padding: calc(var(--spacing) * 4);
+    font-family: var(--font-terminal);
+    font-size: var(--text-8xl);
+    line-height: var(--tw-leading, var(--text-8xl--line-height));
+    color: var(--color-white);
+  }
   button {
     background-color: var(--color-black);
     padding: calc(var(--spacing) * 4);
@@ -778,6 +779,42 @@
   syntax: "*";
   inherits: false;
   initial-value: solid;
+}
+@property --tw-blur {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-brightness {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-contrast {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-grayscale {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-hue-rotate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-invert {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-opacity {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-saturate {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-sepia {
+  syntax: "*";
+  inherits: false;
 }
 @property --tw-leading {
   syntax: "*";
