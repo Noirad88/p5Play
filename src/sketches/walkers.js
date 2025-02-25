@@ -1,6 +1,7 @@
 let vec
 const walklength = 10000
 let walkers = []
+
 function setup() {
   createCanvas(500,500)
   pixelDensity(1)
